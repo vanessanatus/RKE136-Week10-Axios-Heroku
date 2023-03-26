@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.movie-card {
+    margin-top: 1.5rem;
+    height: 800px;
+    text-align: center;
+}
+
+.movie-title {
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    transform: translateY(-150px);
+    animation: slide-from-top 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-from-top {
+    80% {transform: translateY(5px);}
+    100% {transform: translateY(0);}
+}
+
+.movie-genres {
+    margin-bottom: 1rem;
+  
+}
+
+.movie-rating {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+.movie-poster-container img {
+    margin-top: 1rem;
+    height: 500px;
+    border-radius: 13px;
+    position: relative;
+    left: -80rem;
+    animation: slide-from-left 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-from-left {
+    80% {left: 1.5rem;}
+    100% {left: 0;}
+}
+
+.movie-info-quote {
+    color: #3d3c3ca4;
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    right: -80rem;
+    animation: slide-from-right 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-from-right {
+    80% {right: 1.5rem;}
+    100% {right: 0;}
+}
+
+.movie-info-overview-title {
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.2rem;
+}
+
+.movie-info-actions {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.movie-info-actions ul li {
+    display: inline-block;
+    margin-right: 1rem;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(3, 37, 65);
+    
+}
+
+.movie-info-actions ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 2px 2px rgb(165, 155, 155);
+}
+
+.movie-info-actions ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    margin-top: 1rem;
+    text-align: center;
+
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+footer ul li a {
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #241f1f;
+}

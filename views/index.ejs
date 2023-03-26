@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My First Heroku Project</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="movie-card">
+            <h2 class="movie-title"><%= dataToRender.title %></h2>
+            <p class="movie-genres">
+                <span class="movie-rating">R </span>
+                <span class="release-date"><%= releaseYear %>, </span>  
+                <span class="genres" ><%= genres %> </span>
+                <span class="movie-duration"><%= dataToRender.runtime %> minutes</span>
+            </p>
+            <div class="movie-poster-container">
+                <img src="<%= poster %>" alt="">
+            </div>
+
+            <!-- <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="closeBtn">&times;</span>
+                    <img src="" alt="" class="movie-poster-modal">
+                    <h1></h1>
+                </div>
+            </div> -->
+
+            <div class="movie-info-container">
+                <p class="movie-info-quote"><%= dataToRender.tagline %></p>
+
+                <h2 class="movie-info-overview-title">overview</h2>
+                <p class="movie-info-overview"><%= dataToRender.overview %></p>
+
+
+
+                <!-- <div class="container">
+                    <div class="carousel">
+
+                        <div class="carousel__item carousel__item--visible">
+                            <img src="images/1.jpg" alt="">
+                        </div>
+
+                        <div class="carousel__item">
+                            <img src="images/2.jpg" alt="">
+                        </div>
+
+                        <div class="carousel__item">
+                            <img src="images/3.jpg" alt="">
+                        </div>
+
+                        <div class="carousel__item">
+                            <img src="images/4.jpg" alt="">
+                        </div>
+
+                        <div class="carousel__item">
+                            <img src="images/5.jpg" alt="">
+                        </div>
+
+                        <div class="carousel__actions">
+                            <button id="carousel__button--prev" aria-label="Previous slide"><</button>
+                            <button id="carousel__button--next" aria-label="Next slide">></button>
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+
+                <div class="movie-info-actions">
+                    <ul>
+                        <li><a href="#" class="add-fav"><i class="fas fa-heart"></i></a></li>
+                        <li><a href="#" class="add-bookmark"><i class="fas fa-bookmark"></i></a></li>
+                        <li><a href="#" class="rate-movie"><i class="fas fa-star-half-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+            <footer>
+                <h3>Find me to discuss the movie</h3>
+             
+                <ul>
+                    <li> <a href="#">Twitter <i class="fa-brands fa-twitter"></i></a> </li>
+                    <li> <a href="#">Instagram <i class="fa-brands fa-instagram"></i></a> </li>
+                    <li> <a href="#">Facebook  <i class="fa-brands fa-facebook"></i></a> </li>
+                </ul>
+    
+                <p>Vanessa Nat. &#169; <span class="year"><%= year %></span></p>
+    
+            </footer>
+
+
+    </div>
+    
+    <script src="https://kit.fontawesome.com/45f93c3056.js" crossorigin="anonymous"></script>
+    <!-- <script src="scripts/carousel.js"></script> -->
+</body>
+</html>
