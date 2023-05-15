@@ -1,11 +1,13 @@
 const {default: axios } = require('axios');
 const express = require('express');
+const http = require('htpp');
 //const axios = require('axios');
 const app = express();
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/', (req, res)=> {
     let url = 'https://api.themoviedb.org/3/movie/808?api_key=57aa6a68fc3d67261c9eb13819ca664f';
@@ -83,6 +85,52 @@ app.post('/search', (req, res) => {
     }));
         
 }); 
+
+//new route
+app.post('/getmovie', (req, res) => {
+	const movieToSearch =
+		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
+			? req.body.queryResult.parameters.movie
+			: '';
+
+	const reqUrl = encodeURI(
+		`http://www.omdbapi.com/?t=${movieToSearch}&apikey=400a5ad1`
+	);
+	http.get(
+		reqUrl,
+		responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				const movie = JSON.parse(completeResponse);
+                if (!movie || !movie.Title) {
+                    return res.json({
+                        fulfillmentText: 'Sorry, we could not find the movie you are asking for.',
+                        source: 'getmovie'
+                    });
+                }
+
+				let dataToSend = movieToSearch;
+				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
+					movie.Director
+				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.`;
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				});
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'getmovie'
+			});
+		}
+	)
+});
 
 app.listen(process.env.PORT || 3000, ()=> {
     console.log('Server is  running');
